@@ -1,17 +1,21 @@
-<h2>Hi, I'm Lucas Maciel! 
-<img src="https://media.giphy.com/media/12oufCB0MyZ1Go/giphy.gif" width="50"></h2>
-<p><em>Python Developer<img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"> 
-</em></p>
-
-<div style="display: inline_block"><br>
-  <img align="center" alt="Python" height="60" width="60" src="https://raw.githubusercontent.com/jmnote/z-icons/master/svg/python.svg">
-</div>
+# Hey there!
+My name is **Lucas Maciel**
+\
+\
+📱 I've been working as Python Developer for the last year and currently I'm working with Data, but focusing in IA\
+📚 This year I developed some university projects with Streamlit, IA Agent and Artificial Neural Networks.\
+🌵 In my free time I like to read and play table games.
   
   ##
  
-<div> 
-  <a href = "mailto:lucasmacielg73@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
-  <a href="https://www.linkedin.com/in/lucas-maciel-gomes/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
+[![LinkedIn Badge](https://img.shields.io/badge/-Linkedin-blueviolet?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lucas-maciel-gomes/) [![Email Badge](https://img.shields.io/badge/Email-lucasmacielg73@gmail.com-blueviolet)](mailto:lucasmacielg73@gmail.com)
+
+## My github stats
+
+<div align="center">
+  <a href="https://github.com/lucassmaciel">
+  <img height="180em" src="https://github-readme-stats-sigma-five.vercel.app/api?username=lucassmaciel&show_icons=true&count_private=true&line_height=30&title_color=bf5af2&icon_color=9b59b6&text_color=c9d1d9&bg_color=0d1117"/>
+  <img height="180em" src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=lucassmaciel&layout=compact&title_color=bf5af2&text_color=c9d1d9&bg_color=0d1117"/>
 </div>
 
 ![Snake animation](https://raw.githubusercontent.com/brunobmorais/brunobmorais/master/.github/images/github-contribution-grid-snake.svg)
