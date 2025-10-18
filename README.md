@@ -2,9 +2,10 @@
 My name is **Lucas Maciel**
 \
 \
-📱 I've been working as Python Developer for the last year and currently I'm working with Data, but focusing in IA\
-📚 This year I developed some university projects with Streamlit, IA Agent and Artificial Neural Networks.\
-🌵 In my free time I like to read and play table games.
+💻 I'm currently working as a **Python Developer**, focusing on **data processing**.  
+🤖 My goal is to move towards **Artificial Intelligence**, especially in **Computer Vision** and **Intelligent Agents** — areas that truly inspire me.  
+📚 This year I’ve developed university projects involving **Streamlit**, **AI Agents**, and **Artificial Neural Networks**.  
+🌵 In my free time, I enjoy reading and playing tabletop games.
   
   ##
  
