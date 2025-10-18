@@ -2,11 +2,10 @@
 My name is **Lucas Maciel**
 \
 \
-💻 I'm currently working as a **Python Developer**, focusing on **data processing**.  
-🤖 My goal is to move towards **Artificial Intelligence**, especially in **Computer Vision** and **Intelligent Agents** — areas that truly inspire me.  
-📚 This year I’ve developed university projects involving **Streamlit**, **AI Agents**, and **Artificial Neural Networks**.  
-🌵 In my free time, I enjoy reading and playing tabletop games.
-  
+💻 I'm currently working as a Python Developer, focusing on data processing.\
+🤖 My goal is working with Artificial Intelligence, especially Computer Vision and Intelligent Agents, areas that truly inspire me.\
+📚 This year I’ve developed projects involving Streamlit, AI Agents, and Artificial Neural Networks.
+
   ##
  
 [![LinkedIn Badge](https://img.shields.io/badge/-Linkedin-blueviolet?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lucas-maciel-gomes/) [![Email Badge](https://img.shields.io/badge/Email-lucasmacielg73@gmail.com-blueviolet)](mailto:lucasmacielg73@gmail.com)
