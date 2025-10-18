@@ -4,7 +4,7 @@
 </em></p>
 
 <div style="display: inline_block"><br>
-  <img align="center" alt="Python" height="30" width="40" src="https://raw.githubusercontent.com/jmnote/z-icons/master/svg/python.svg">
+  <img align="center" alt="Python" height="60" width="60" src="https://raw.githubusercontent.com/jmnote/z-icons/master/svg/python.svg">
 </div>
   
   ##
