@@ -2,9 +2,7 @@
 My name is **Lucas Maciel**
 \
 \
-💻 I'm currently working as a Python Developer, focusing on data processing.\
-🤖 My goal is working with Artificial Intelligence, especially Computer Vision and Intelligent Agents, areas that truly inspire me.\
-📚 This year I’ve developed projects involving Streamlit, AI Agents, and Artificial Neural Networks.
+💻 I'm currently working as a Data Engineer focusing in Pyspark, SQL, AirFlow.\
 
   ##
  
