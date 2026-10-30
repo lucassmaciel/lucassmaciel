@@ -22,7 +22,7 @@ W, H = 880, 362
 PAD = 20
 
 NAME = "Lucas Maciel"
-LINE = "Data engineer building batch pipelines with Spark, Airflow and Iceberg."
+LINE = "Data engineer building pipelines with Spark, Airflow and Iceberg."
 
 CUTS = [0.25, 0.5, 0.66]  # where the partitions split, as a fraction of the name's height
 GAP = 1.6          # visible cut between bands, px
