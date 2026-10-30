@@ -2,7 +2,8 @@
 
 The name is cut into horizontal bands, like a table split into partitions.
 On load the bands arrive out of line and settle into place once; the thin
-cuts between them stay visible in the final, static state.
+cuts between them stay visible in the final, static state. Below it, the
+career is drawn as a DAG: two parallel upstream tasks merge into the current one.
 
 Text is shaped with HarfBuzz and converted to outlines, so the typography
 renders identically on GitHub without loading any font.
@@ -17,11 +18,11 @@ import uharfbuzz as hb
 from fontTools.pens.svgPathPen import SVGPathPen
 from fontTools.ttLib import TTFont
 
-W, H = 880, 172
+W, H = 880, 362
 PAD = 20
 
 NAME = "Lucas Maciel"
-LINE = "Data engineer in Manaus, building batch pipelines with Spark, Airflow and Iceberg."
+LINE = "Data engineer building batch pipelines with Spark, Airflow and Iceberg."
 
 CUTS = [0.25, 0.5, 0.66]  # where the partitions split, as a fraction of the name's height
 GAP = 1.6          # visible cut between bands, px
@@ -29,8 +30,16 @@ GAP = 1.6          # visible cut between bands, px
 OFFSETS = [-44, 28, -16, 36]
 
 THEMES = {
-    "light": {"ink": "#24150E", "muted": "#6B4430"},  # Rio Negro, strong tea
-    "dark": {"ink": "#EFE9DF", "muted": "#B39B86"},   # river foam, light tea
+    "light": {
+        "ink": "#24150E", "muted": "#6B4430",           # Rio Negro, strong tea
+        "negro": "#3A2418", "solimoes": "#B8935F",      # the two rivers, as edges
+        "node": "#FBF8F3", "line": "#D9CBB6", "ok": "#3F8A5C", "queued": "#B9A891",
+    },
+    "dark": {
+        "ink": "#EFE9DF", "muted": "#B39B86",
+        "negro": "#8E6B55", "solimoes": "#D9BC8F",
+        "node": "#161B22", "line": "#3A3128", "ok": "#5DB07E", "queued": "#6E6153",
+    },
 }
 
 
@@ -81,7 +90,11 @@ class Typesetter:
         adv = sum(p.x_advance for p in buf.glyph_positions)
         return (adv + track * self.upem * (len(buf.glyph_positions) - 1)) * size / self.upem
 
-    def path(self, text, size, x, y, wdth=100, wght=400, track=0.0):
+    def path(self, text, size, x, y, wdth=100, wght=400, track=0.0, anchor="start"):
+        if not text:
+            return ""
+        if anchor == "end":
+            x -= self.width(text, size, wdth, wght, track)
         font, buf = self._shape(text, wdth, wght)
         scale = size / self.upem
         track_units = track * self.upem
@@ -98,6 +111,51 @@ class Typesetter:
         return "".join(parts)
 
 
+def node(ts, t, x, y, w, title, role, years, state, delay):
+    h = 66
+    dot = t["ok"] if state == "ok" else t["queued"]
+    dash = ' stroke-dasharray="4 4"' if state == "queued" else ""
+    # A node with no role line centres its title and status dot vertically.
+    title_y, dot_y = (y + 27, y + 21.5) if role else (y + 39, y + 33)
+    name = ts.path(title, 17, x + 34, title_y, wdth=80, wght=650)
+    sub = ts.path(role, 13.5, x + 34, y + 46, wdth=75, wght=420)
+    yrs = ts.path(years, 12.5, x + w - 14, y + 27, wdth=75, wght=420, anchor="end")
+    status = (
+        f'<circle class="dot" style="animation-delay:{delay}s" cx="{x + 18}" cy="{dot_y}" r="5" fill="{dot}"/>'
+        if state == "ok"
+        else f'<circle cx="{x + 18}" cy="{dot_y}" r="4.25" fill="none" stroke="{dot}" stroke-width="1.5"/>'
+    )
+    return (
+        f'<g><rect x="{x}" y="{y}" width="{w}" height="{h}" rx="7" fill="{t["node"]}" stroke="{t["line"]}"{dash}/>'
+        f'{status}<g fill="{t["ink"]}">{name}</g><g fill="{t["muted"]}">{sub}{yrs}</g></g>'
+    )
+
+
+def dag(ts, t, top):
+    """Calidus and Sidia ran in parallel and merge into EloGroup; downstream the
+    two streams keep running side by side, like the Negro and the Solimões."""
+    nw = 236
+    ax, ay = PAD, top
+    bx, by = PAD, top + 94
+    mx, my = 372, top + 47
+    nx = W - PAD - 104  # right edge lines up with the end of the name
+    cy_a, cy_b, cy_m = ay + 33, by + 33, my + 33
+    edges = (
+        f'<path class="edge" style="animation-delay:.95s" d="M{ax + nw} {cy_a} C{ax + nw + 70} {cy_a} {mx - 70} {cy_m - 6} {mx} {cy_m - 6}" stroke="{t["negro"]}"/>'
+        f'<path class="edge" style="animation-delay:1.1s" d="M{bx + nw} {cy_b} C{bx + nw + 70} {cy_b} {mx - 70} {cy_m + 6} {mx} {cy_m + 6}" stroke="{t["solimoes"]}"/>'
+        f'<path class="edge" style="animation-delay:1.85s;stroke-width:3;stroke-linecap:butt" d="M{mx + nw} {cy_m - 1.5} H{nx - 34}" stroke="{t["negro"]}"/>'
+        f'<path class="edge" style="animation-delay:1.85s;stroke-width:3;stroke-linecap:butt" d="M{mx + nw} {cy_m + 1.5} H{nx - 34}" stroke="{t["solimoes"]}"/>'
+        f'<path d="M{nx - 30} {cy_m} H{nx}" stroke="{t["queued"]}" stroke-dasharray="3 4"/>'
+    )
+    nodes = (
+        node(ts, t, ax, ay, nw, "Calidus", "Computer vision R&D lead", "2024–25", "ok", 0.8)
+        + node(ts, t, bx, by, nw, "Sidia", "Python and Polars pipelines", "2025–26", "ok", 0.9)
+        + node(ts, t, mx, my, nw, "EloGroup", "Spark, Airflow, Iceberg", "2026–", "ok", 1.7)
+        + node(ts, t, nx, my, 104, "Next", "", "", "queued", 0)
+    )
+    return edges + nodes
+
+
 def build(ts: Typesetter, theme: str) -> str:
     t = THEMES[theme]
 
@@ -111,6 +169,7 @@ def build(ts: Typesetter, theme: str) -> str:
 
     name = ts.path(NAME, size, PAD, baseline, wdth, wght, track)
     line = ts.path(LINE, 18.5, PAD + 2, baseline + 44, wdth=92, wght=420)
+    graph = dag(ts, t, baseline + 84)
 
     edges = [top] + [top + c * (bottom - top) for c in CUTS] + [bottom]
     clips, bands = [], []
@@ -127,19 +186,26 @@ def build(ts: Typesetter, theme: str) -> str:
 
     style = """
     .band { animation: settle 1.1s cubic-bezier(.16,1,.3,1) backwards; }
+    .edge { fill: none; stroke-width: 2.25; stroke-linecap: round; stroke-dasharray: 400;
+            animation: draw .7s cubic-bezier(.3,.6,.2,1) backwards; }
+    .dot { animation: run .45s ease-out backwards; }
     @keyframes settle { from { transform: translateX(var(--from)); opacity: .35; } }
-    @media (prefers-reduced-motion: reduce) { .band { animation: none; } }
-    """
+    @keyframes draw { from { stroke-dashoffset: 400; } }
+    @keyframes run { from { fill: QUEUED; r: 3; } }
+    @media (prefers-reduced-motion: reduce) { .band, .edge, .dot { animation: none; } }
+    """.replace("QUEUED", t["queued"])
 
     return (
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}" '
         f'role="img" aria-labelledby="t">'
         f'<title id="t">Lucas Maciel. {LINE}</title>'
+        f'<desc>Career as a pipeline: Calidus (computer vision R&amp;D, 2024–25) and Sidia (Python and Polars '
+        f'pipelines, 2025–26) run in parallel and merge into EloGroup (Spark, Airflow, Iceberg, 2026–).</desc>'
         f"<style>{style}</style>"
         f'<defs>{ts.defs()}<g id="name">{name}</g>{"".join(clips)}</defs>'
         f'<g fill="{t["ink"]}">{"".join(bands)}</g>'
         f'<g fill="{t["muted"]}">{line}</g>'
-        f"</svg>"
+        f"{graph}</svg>"
     )
 
 
