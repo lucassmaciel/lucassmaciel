@@ -3,9 +3,10 @@
   <img width="100%" alt="Lucas Maciel. Data engineer building pipelines with Spark, Airflow and Iceberg." src="https://raw.githubusercontent.com/lucassmaciel/lucassmaciel/main/assets/hero-light.svg?v=6">
 </picture>
 
-I write PySpark and Spark SQL jobs that run on YARN, schedule them with Airflow, and land the data in Iceberg tables you can query through Impala and Hive. I started out in computer vision and machine learning, and I'm finishing a degree in Information Systems at UEA.
-
-> My work code stays in private repos, so the projects below are personal and academic.
+- Building data pipelines with PySpark, Airflow and Apache Iceberg
+- Background in computer vision and machine learning
+- Information Systems @ UEA, graduating Dec 2026
+- Work code is private; the projects below are personal and academic
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/lucas-maciel-gomes/)
 [![Email](https://img.shields.io/badge/lucasmacielg73@gmail.com-D14836?style=flat&logo=gmail&logoColor=white)](mailto:lucasmacielg73@gmail.com)
