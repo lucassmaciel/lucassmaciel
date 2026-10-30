@@ -2,7 +2,7 @@
 
 **Data Engineer** at EloGroup · Manaus, Brazil
 
-I build batch pipelines for Brazilian fiscal and tax data (NF-e, SPED, PGDAS-D, DIMP): PySpark jobs orchestrated with Airflow on Cloudera CDP, landing in Apache Iceberg tables. Before that, I built Python/Polars pipelines for wearable sensor data at Sidia (~30% faster runtime after a restructure) and led an 8-person computer vision R&D team at Calidus.
+I build and maintain large-scale batch pipelines on a Cloudera CDP (Hadoop) stack: PySpark and Spark SQL jobs running on YARN via Livy, orchestrated with Airflow using data-aware (asset-based) scheduling, and landing in Apache Iceberg tables queried through Impala and Hive. Day to day that means ingesting from relational sources over JDBC, handling Iceberg schema evolution, tuning Spark joins and AQE, and debugging Kerberos-secured infrastructure. Before that, I built Python/Polars pipelines for wearable sensor data at Sidia (~30% faster runtime after a restructure) and led an 8-person computer vision R&D team at Calidus.
 
 Information Systems @ UEA · graduating Dec 2026
 
@@ -23,6 +23,9 @@ Information Systems @ UEA · graduating Dec 2026
 ![Airflow](https://img.shields.io/badge/Airflow-017CEE?style=flat&logo=apacheairflow&logoColor=white)
 ![Iceberg](https://img.shields.io/badge/Apache_Iceberg-2D3E50?style=flat&logo=apache&logoColor=white)
 ![Parquet](https://img.shields.io/badge/Parquet-50ABF1?style=flat&logo=apacheparquet&logoColor=white)
+![Hive](https://img.shields.io/badge/Hive-FDEE21?style=flat&logo=apachehive&logoColor=black)
+![Impala](https://img.shields.io/badge/Impala-2D3E50?style=flat&logo=apache&logoColor=white)
+![Hadoop](https://img.shields.io/badge/Hadoop_/_YARN-66CCFF?style=flat&logo=apachehadoop&logoColor=black)
 ![Cloudera](https://img.shields.io/badge/Cloudera_CDP-F96702?style=flat&logo=cloudera&logoColor=white)
 
 **Tooling** &nbsp;
